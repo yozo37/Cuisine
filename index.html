@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter une Recette - Header Simple</title>
+    <style>
+        header {
+            background-color: brown;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Recette</h1>
+    <h1>Ajouter une Recette</h1>
+
+</header>
+
+<h1>Ajouter une Recette</h1>
+
+<form action="traitement_recette.php" method="post">
+    <label for="nom_recette">Nom de la Recette:</label>
+    <input type="text" id="nom_recette" name="nom_recette" required>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" rows="4" required></textarea>
+
+    <label for="ingredients">Ingrédients:</label>
+    <textarea id="ingredients" name="ingredients" rows="4" required></textarea>
+
+    <label for="instructions">Instructions:</label>
+    <textarea id="instructions" name="instructions" rows="4" required></textarea>
+
+    <label for="categorie">Catégorie:</label>
+    <select id="categorie" name="categorie" required>
+        <option value="entree">Entrée</option>
+        <option value="plat">Plat principal</option>
+        <option value="dessert">Dessert</option>
+    </select>
+
+    <button type="submit">Ajouter la Recette</button>
+</form>
+
+</body>
+</html>
