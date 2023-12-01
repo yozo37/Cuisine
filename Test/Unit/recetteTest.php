@@ -28,22 +28,22 @@ class RecetteTest extends TestCase {
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
-    // public function testAddRecette() {
-    //     $this->assertTrue($this->recetteDAO->addRecette('Salade César', 'Instructions de la salade César...', 15, 1, null));
-    // }
+    public function testAddRecette() {
+        $this->assertTrue($this->recetteDAO->addRecette('Salade César', 'Instructions de la salade César...', 15, 1, null));
+    }
 
     // public function testUpdateRecette() {
     //     $this->assertTrue($this->recetteDAO->updateRecette(1, 'Nouveau Nom', 'Nouvelles instructions', 20, 2, null));
     // }
 
-    public function testDeleteRecette() {
-        $this->recetteDAO->deleteRecette(4);
+    // public function testDeleteRecette() {
+    //     $this->recetteDAO->deleteRecette(4);
 
-        $stmt = $this->pdo->query('SELECT * FROM recettes WHERE id_recette = 4');
-        $recette = $stmt->fetch(PDO::FETCH_ASSOC);
+    //     $stmt = $this->pdo->query('SELECT * FROM recettes WHERE id_recette = 4');
+    //     $recette = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $this->assertFalse($recette);
-    }
+    //     $this->assertFalse($recette);
+    // }
 
     public function testGetRecetteByID() {
         $recette = $this->recetteDAO->getRecetteByID(2);

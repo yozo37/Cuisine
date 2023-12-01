@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter une Recette - Header Simple</title>
+    <title>Ajouter une Recette</title>
     <style>
         header {
             background-color: brown;
@@ -16,12 +16,8 @@
 <body>
 
 <header>
-    <h1>Recette</h1>
     <h1>Ajouter une Recette</h1>
-
 </header>
-
-<h1>Ajouter une Recette</h1>
 
 <form action="traitement_recette.php" method="post">
     <label for="nom_recette">Nom de la Recette:</label>
@@ -32,6 +28,9 @@
 
     <label for="ingredients">Ingrédients:</label>
     <textarea id="ingredients" name="ingredients" rows="4" required></textarea>
+
+    <label for="ingredient_list">Liste des Ingrédients:</label>
+    <input type="text" id="ingredient_list" name="ingredient_list" required>
 
     <label for="instructions">Instructions:</label>
     <textarea id="instructions" name="instructions" rows="4" required></textarea>

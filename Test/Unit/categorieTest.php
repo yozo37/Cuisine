@@ -31,14 +31,14 @@ class CategorieTest extends TestCase {
   
 
     // Teste l'ajout d'une catégorie
-    // public function testAddCategorie() {
-    //     $this->assertTrue($this->categorie->addCategorie('khaola'));
-    // }
+    public function testAddCategorie() {
+        $this->assertTrue($this->categorie->addCategorie('khaola'));
+    }
 
     // Teste la mise à jour d'une catégorie
-    // public function testUpdateCategorie() {
-    //     $this->assertTrue($this->categorie->updateCategorie(1, 'Entrée'));
-    // }
+    public function testUpdateCategorie() {
+        $this->assertTrue($this->categorie->updateCategorie(1, 'Entrée'));
+    }
     public function testDeleteCategorie() {
         // Supprime la catégorie avec l'ID 5 en appelant la méthode deleteCategorie
         $this->categorie->deleteCategorie(9);

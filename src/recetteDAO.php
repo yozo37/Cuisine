@@ -86,5 +86,6 @@ class RecetteDAO {
             return false;
         }
     }
+
 }
 ?>
