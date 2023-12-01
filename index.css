@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  
+  header {
+      background-color: #f30606;
+      padding: 20px;
+      text-align: center;
+  
+  }
+  
+  
+  .h1 {
+      font-family: 'Arial', serif;
+      font-style: italic;
+      font-size: 40px;
+      color: #fff;
+  }
+  
+  
+  form {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  input[type="text"],
+  textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: none;
+  }
+  
+  button.AjouterRecetteButton {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #4caf50;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  }
+  
+  button.AjouterRecetteButton:hover {
+      background-color: #45a049;
+  }
+  
+  
+  select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #fff;
+      color: #333;
+  }
+  
+  
+  select option {
+      background-color: #fff;
+      color: #333;
+  }
+  
+  body {
+      background-image: url('https://www.bora.com/fileadmin/_processed_/3/8/csm_Jennifer.Paro_x_Bora_1u2_11_zugeschnitten_e365af6df3.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+  }
+  
+  
+  
