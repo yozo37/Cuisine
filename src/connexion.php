@@ -3,7 +3,7 @@
 try {
     $hote = "localhost";
     $utilisateur = "root";
-    $motDePasse = "khaola2502";
+    $motDePasse = "yohann";
     $nomDeLaBase = "cuisine";
     
     // Création d'une instance de PDO pour la connexion à la BDD

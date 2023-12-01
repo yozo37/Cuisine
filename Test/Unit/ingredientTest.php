@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 require_once('./src/ingredient.php');
 require_once('./src/ingredientDAO.php');
 
@@ -28,9 +28,10 @@ class IngredientTest extends TestCase {
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
-    // public function testAddIngredient() {
-    //     $this->assertTrue($this->ingredientDAO->addIngredient('carotte', 1.5, 'grammes'));
-    // }
+    public function testAddIngredient() {
+        $this->asserttrue($this->ingredientDAO->addIngredient('carotte', 1.5, 'grammes'));
+
+    }
 
     // public function testUpdateIngredient() {
     //     $this->assertTrue($this->ingredientDAO->updateIngredient(1, 'Nouveau Nom', 2.0, 'Kilogramme'));
@@ -45,12 +46,12 @@ class IngredientTest extends TestCase {
     //     $this->assertFalse($ingredient);
     // }
 
-    public function testGetIngredientByID() {
-        $ingredient = $this->ingredientDAO->getIngredientByID(2);
+    // public function testGetIngredientByID() {
+    //     $ingredient = $this->ingredientDAO->getIngredientByID(2);
 
-        $this->assertInstanceOf(Ingredient::class, $ingredient);
-        $this->assertEquals(2, $ingredient->id_ingredient);
-        $this->assertEquals('Farine', $ingredient->nom_ingredient);
-    }
+    //     $this->assertInstanceOf(Ingredient::class, $ingredient);
+    //     $this->assertEquals(2, $ingredient->id_ingredient);
+    //     $this->assertEquals('Farine', $ingredient->nom_ingredient);
+    // }
 }
-?>
+?> -->

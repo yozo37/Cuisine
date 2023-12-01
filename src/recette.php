@@ -7,8 +7,7 @@ class Recette {
     public $id_categorie;
     public $id_ingredient;
 
-    public function __construct($id_recette, $nom_recette, $instructions, $temps_preparation, $id_categorie, $id_ingredient) {
-        $this->id_recette = $id_recette;
+    public function __construct( $nom_recette, $instructions, $temps_preparation, $id_categorie, $id_ingredient) {
         $this->nom_recette = $nom_recette;
         $this->instructions = $instructions;
         $this->temps_preparation = $temps_preparation;

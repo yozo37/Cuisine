@@ -53,5 +53,5 @@ class RecetteTest extends TestCase {
         $this->assertEquals('Poulet rôti', $recette->nom_recette);
         // Ajoute d'autres assertions en fonction des autres attributs de Recette
     }
-}
+ }
 ?>

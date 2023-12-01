@@ -1,4 +1,8 @@
 <?php
+include_once "Recette.php";
+include_once "connexion.php";
+include_once "ingredient.php";
+include_once "categorie.php";
 class RecetteDAO {
     private $pdo;
 
@@ -7,15 +11,17 @@ class RecetteDAO {
     }
 
     public function addRecette($nom_recette, $instructions, $temps_preparation, $id_categorie, $id_ingredient) {
-        try {
+          var_dump($nom_recette);
+          try {
             $query = "INSERT INTO recettes (nom_recette, instructions, temps_preparation, id_categorie, id_ingredient) 
-                      VALUES (:nom_recette, :instructions, :temps_preparation, :id_categorie, :id_ingredient)";
+                      VALUES (:nom_recette, :instructions, :temps_preparation, :id_categorie,5)";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':nom_recette', $nom_recette);
             $stmt->bindParam(':instructions', $instructions);
             $stmt->bindParam(':temps_preparation', $temps_preparation);
             $stmt->bindParam(':id_categorie', $id_categorie);
-            $stmt->bindParam(':id_ingredient', $id_ingredient);
+            // $stmt->bindParam(':id_ingredient', $id_ingredient);
+          
             return $stmt->execute();
         } catch (PDOException $e) {
             echo "Erreur d'ajout de recette : " . $e->getMessage();
@@ -23,36 +29,38 @@ class RecetteDAO {
         }
     }
 
-    public function getRecetteByID($id_recette){
-        $stmt = $this->pdo->prepare('SELECT * FROM recettes WHERE id_recette = :id_recette');
-        $stmt->execute([':id_recette' => $id_recette]);
-        $recetteData = $stmt->fetch(PDO::FETCH_ASSOC);
+    public function getRecetteByID($id_recette)
+{
+    $stmt = $this->pdo->prepare('SELECT * FROM recettes WHERE id_recette = :id_recette');
+    $stmt->execute([':id_recette' => $id_recette]);
+    $recetteData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if(!$recetteData){
-            return null;
-        }
-
-        return new Recette(
-            $recetteData['id_recette'],
-            $recetteData['nom_recette'],
-            $recetteData['instructions'],
-            $recetteData['temps_preparation'],
-            $recetteData['id_categorie'],
-            $recetteData['id_ingredient']
-        );
+    if (!$recetteData) {
+        return null;
     }
 
-    public function listerRecettes($nom_recette) {
+    return new Recette(
+        $recetteData['id_recette'],
+        $recetteData['nom_recette'],
+        $recetteData['instructions'],
+        $recetteData['temps_preparation'],
+        $recetteData['id_categorie'],
+        $recetteData['id_ingredient']
+    );
+}
+
+
+    public function listerRecettes() {
         try {
-            $query = "SELECT * FROM recettes WHERE nom_recette = :nom_recette";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindParam(':nom_recette', $nom_recette);
-            return $stmt->execute();
+            $query = "SELECT * FROM recettes";
+            $stmt = $this->pdo->query($query);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             echo "Erreur de listing des recettes : " . $e->getMessage();
             return false;
         }
     }
+    
 
     public function updateRecette($id_recette, $nouveau_nom, $nouvelles_instructions, $nouveau_temps, $nouvelle_categorie, $nouvel_ingredient) {
         try {

@@ -5,7 +5,7 @@
 <env name="DB_PORT" value="3306"/>
 <env name="DB_DATABASE" value="cuisine"/>
 <env name="DB_USERNAME" value="root"/>
-<env name="DB_PASSWORD" value="khaola2502"/>
+<env name="DB_PASSWORD" value="yohann"/>
 </php>
 <testsuites>
 <testsuite name="Unit Test">
