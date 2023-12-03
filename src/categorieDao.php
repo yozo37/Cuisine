@@ -5,7 +5,7 @@ class CategorieDAO {
     public function __construct($pdo){
         $this->pdo = $pdo;
     }
-
+     //Fonction pour ajouter une categorie
     public function addCategorie($nom_categorie) {
         try {
             $query = "INSERT INTO categories (nom_categorie) VALUES (:nom_categorie)";
@@ -29,7 +29,7 @@ class CategorieDAO {
     
         return new Categorie($categorieData['id_categorie'], $categorieData['nom_categorie']);
     }
-    
+    //Fonction pour lister les categorie
     public function listerCategorie($nom_categorie) {
         try {
             $query = "SELECT * from categories (nom_categorie) VALUES (:nom_categorie)";
@@ -41,7 +41,7 @@ class CategorieDAO {
             return false;
         }
     }
-
+      //Fonction pour Mettre a jour une categorie
     public function updateCategorie($id_categorie, $nouveau_nom) {
         try {
             $query = "UPDATE categories SET nom_categorie = :nouveau_nom WHERE id_categorie = :id_categorie";
@@ -55,7 +55,8 @@ class CategorieDAO {
             return false;
         }
     }
-
+    
+     //Fonction pour supprimer une categorie
     public function deleteCategorie($id_categorie) {
         try {
             $query = "DELETE FROM categories WHERE id_categorie = :id_categorie";
