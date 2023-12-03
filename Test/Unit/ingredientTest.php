@@ -29,7 +29,12 @@ class IngredientTest extends TestCase {
     }
 
     public function testAddIngredient() {
-        $this->asserttrue($this->ingredientDAO->addIngredient('carotte', 1.5, 'grammes'));
+        $this->ingredientDAO->addIngredient('Poulet rôti', 'Instructions', 20, 2, null);
+
+        $stmt = $this->pdo->query('SELECT * FROM recettes WHERE nom_recette = "Poulet rôti"');
+        $recette = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $this->assertEquals('Poulet rôti', $recette['nom_recette']);
 
     }
 

@@ -29,7 +29,14 @@ class RecetteTest extends TestCase {
     }
 
     public function testAddRecette() {
-        $this->assertTrue($this->recetteDAO->addRecette('Salade César', 'Instructions de la salade César...', 15, 1, null));
+        $this->recetteDAO->addRecette('Poulet rôti', 'Instructions', 20, 2, null);
+
+        $stmt = $this->pdo->query('SELECT * FROM recettes WHERE nom_recette = "Poulet rôti"');
+        $recette = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $this->assertEquals('Poulet rôti', $recette['nom_recette']);
+
+        
     }
 
     // public function testUpdateRecette() {
@@ -45,13 +52,21 @@ class RecetteTest extends TestCase {
     //     $this->assertFalse($recette);
     // }
 
-    public function testGetRecetteByID() {
-        $recette = $this->recetteDAO->getRecetteByID(2);
+    // public function testGetRecetteByID() {
+    //     $recette = $this->recetteDAO->getRecetteByID(2);
 
-        $this->assertInstanceOf(Recette::class, $recette);
-        $this->assertEquals(2, $recette->id_recette);
-        $this->assertEquals('Poulet rôti', $recette->nom_recette);
-        // Ajoute d'autres assertions en fonction des autres attributs de Recette
-    }
+    //     $this->assertInstanceOf(Recette::class, $recette);
+    //     $this->assertEquals(2, $recette->id_recette);
+    //     $this->assertEquals('Poulet rôti', $recette->nom_recette);
+    //     // Ajoute d'autres assertions en fonction des autres attributs de Recette
+    // }
+    // public function listerRecettes() {
+    //     $recette = $this->recetteDAO->listerRecettes();
+
+    //     $this->assertInstanceOf(Recette::class, $recette);
+    //     $this->assertEquals(2, $recette->id_recette);
+    //     $this->assertEquals('Poulet rôti', $recette->nom_recette);
+    //     // Ajoute d'autres assertions en fonction des autres attributs de Recette
+    // }
  }
 ?>

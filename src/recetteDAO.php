@@ -10,24 +10,38 @@ class RecetteDAO {
         $this->pdo = $pdo;
     }
 
-    public function addRecette($nom_recette, $instructions, $temps_preparation, $id_categorie, $id_ingredient) {
-          var_dump($nom_recette);
-          try {
-            $query = "INSERT INTO recettes (nom_recette, instructions, temps_preparation, id_categorie, id_ingredient) 
-                      VALUES (:nom_recette, :instructions, :temps_preparation, :id_categorie,5)";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindParam(':nom_recette', $nom_recette);
-            $stmt->bindParam(':instructions', $instructions);
-            $stmt->bindParam(':temps_preparation', $temps_preparation);
-            $stmt->bindParam(':id_categorie', $id_categorie);
-            // $stmt->bindParam(':id_ingredient', $id_ingredient);
-          
-            return $stmt->execute();
+    public function addRecette($nom_recette, $instructions, $temps_preparation, $id_categorie, $id_ingredients) {
+        try {
+            $this->pdo->beginTransaction();
+    
+            // Add the recipe
+            $stmtAddRecette = $this->pdo->prepare('INSERT INTO recettes (nom_recette, instructions, temps_preparation, id_categorie) VALUES (:nom_recette, :instructions, :temps_preparation, :id_categorie)');
+            $stmtAddRecette->bindParam(':nom_recette', $nom_recette);
+            $stmtAddRecette->bindParam(':instructions', $instructions);
+            $stmtAddRecette->bindParam(':temps_preparation', $temps_preparation);
+            $stmtAddRecette->bindParam(':id_categorie', $id_categorie);
+            $stmtAddRecette->execute();
+    
+            // Get the ID of the inserted recipe
+            $id_recette = $this->pdo->lastInsertId();
+    
+            // Add entries to the recette_ingredient table
+            $stmtAddRecetteIngredient = $this->pdo->prepare('INSERT INTO recette_ingredient (id_recette, id_ingredient) VALUES (:id_recette, :id_ingredient)');
+            foreach ($id_ingredients as $id_ingredient) {
+                $stmtAddRecetteIngredient->bindParam(':id_recette', $id_recette, PDO::PARAM_INT);
+                $stmtAddRecetteIngredient->bindParam(':id_ingredient', $id_ingredient, PDO::PARAM_INT);
+                $stmtAddRecetteIngredient->execute();
+                
+                echo "Inserted id_recette: $id_recette, id_ingredient: $id_ingredient<br>";
+            }
+    
+            $this->pdo->commit();
         } catch (PDOException $e) {
-            echo "Erreur d'ajout de recette : " . $e->getMessage();
-            return false;
+            $this->pdo->rollBack();
+            echo "Error: " . $e->getMessage();
         }
     }
+    
 
     public function getRecetteByID($id_recette)
 {
@@ -94,6 +108,6 @@ class RecetteDAO {
             return false;
         }
     }
-
+   
 }
 ?>

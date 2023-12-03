@@ -9,7 +9,16 @@
 <body>
 <div class="content">
         <div class="title">
-            <h2>Ajouter une recette</h2>
+        <header>
+            <h1>Recipe Management</h1>
+            <nav>
+                <ul>
+                    <a href="index.php">Accueil</a>
+                    <a href="supprimerecette.php">Supprimer</a>
+                    <a href="listerecette.php">liste de recette</a>
+                </ul>
+            </nav>
+        </header>
         </div>
 
         <div class="add-recipe-form">
@@ -35,52 +44,7 @@
 
                 <button type="submit">Ajouter la recette</button>
             </form>
-        </div>
-    </div>
-        <div class="recipe-sct">
-            <div class="recipe-table">
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Instructions</th>
-                        <th>Ingrédients</th>
-                        <th>Categorie</th>
-                    </tr>
-
-                    <?php
-
-                    require_once('config.php');
-                    require_once('src/recetteDAO.php');
-
-                    $recetteDAO = new RecetteDAO($pdo);
-                        $recettes = $recetteDAO->listerRecettes();
-
-                        foreach ($recettes as $recette) {
-                            echo "<tr>";
-                            echo "<td>" . $recette['id_recette'] . "</td>";
-                            echo "<td>" . $recette['nom_recette'] . "</td>";
-                            echo "<td>" . $recette['instructions'] . "</td>";
-                            echo "<td>" . $recette['temps_preparation'] . "</td>";
-                            echo "<td>" . $recette['id_categorie'] . "</td>"; 
-                            echo "<td>" . $recette['id_ingredient'] . "</td>"; 
-                            echo "</tr>";
-                        }
-                    ?>
-                
-
-                <div class="delete-recipe-form">
-                    <h2>Supprimer Recette</h2>
-                    <form action="supprimer.php" method="post">
-                        <label for="id_delete">ID:</label>
-                        <input type="text" name="id_delete" required>
-
-                        <button type="submit">Supprimer Recette</button>
-                    </form> 
-                </div>
-            </div>
-        </div>
-    </div>
+       
     
 </body>
 </html>

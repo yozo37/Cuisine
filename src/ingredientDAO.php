@@ -7,18 +7,11 @@ class IngredientDAO {
     }
 
     public function addIngredient($nom_ingredient, $quantite_disponible, $unite_mesure) {
-        try {
-            $query = "INSERT INTO ingredients (nom_ingredient, quantite_disponible, unite_mesure) 
-                      VALUES (:nom_ingredient, :quantite_disponible, :unite_mesure)";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindParam(':nom_ingredient', $nom_ingredient);
-            $stmt->bindParam(':quantite_disponible', $quantite_disponible);
-            $stmt->bindParam(':unite_mesure', $unite_mesure);
-            return $stmt->execute();
-        } catch (PDOException $e) {
-            echo "Erreur d'ajout d'ingrédient : " . $e->getMessage();
-            return false;
-        }
+        $stmt = $this->pdo->prepare('INSERT INTO ingredients (nom_ingredient, quantite_disponible, unite_mesure) VALUES (:nom_ingredient, :quantite_disponible, :unite_mesure)');
+        $stmt->bindParam(':nom_ingredient', $nom_ingredient);
+        $stmt->bindParam(':quantite_disponible', $quantite_disponible);
+        $stmt->bindParam(':unite_mesure', $unite_mesure);
+        $stmt->execute();
     }
 
     public function getIngredientByID($id_ingredient){
