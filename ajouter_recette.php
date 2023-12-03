@@ -10,15 +10,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tempsPreparation = $_POST['temps_preparation'];
     $categorie = $_POST['id_categorie'];
 
-    // Assuming $connexion is your database connection
+
     $recetteDAO = new RecetteDAO($connexion);
 
-    // Check if $ingredients is an array
+  
     if (is_array($ingredients)) {
-        // If $ingredients is an array, you can implode it
+        
         $ingredientsAsString = implode(',', $ingredients);
     } else {
-        // If $ingredients is not an array, handle it accordingly (e.g., set it to an empty string)
+       
         $ingredientsAsString = '';
     }
 
