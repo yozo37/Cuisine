@@ -10,7 +10,6 @@
 <div class="content">
         <div class="title">
         <header>
-            <h1>Recipe Management</h1>
             <nav>
                 <ul>
                     <a href="index.php">Accueil</a>
