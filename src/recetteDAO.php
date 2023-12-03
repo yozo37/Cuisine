@@ -14,7 +14,7 @@ class RecetteDAO {
         try {
             $this->pdo->beginTransaction();
     
-            // Add the recipe
+            
             $stmtAddRecette = $this->pdo->prepare('INSERT INTO recettes (nom_recette, instructions, temps_preparation, id_categorie) VALUES (:nom_recette, :instructions, :temps_preparation, :id_categorie)');
             $stmtAddRecette->bindParam(':nom_recette', $nom_recette);
             $stmtAddRecette->bindParam(':instructions', $instructions);
@@ -22,10 +22,10 @@ class RecetteDAO {
             $stmtAddRecette->bindParam(':id_categorie', $id_categorie);
             $stmtAddRecette->execute();
     
-            // Get the ID of the inserted recipe
+            
             $id_recette = $this->pdo->lastInsertId();
     
-            // Add entries to the recette_ingredient table
+            
             $stmtAddRecetteIngredient = $this->pdo->prepare('INSERT INTO recette_ingredient (id_recette, id_ingredient) VALUES (:id_recette, :id_ingredient)');
             foreach ($id_ingredients as $id_ingredient) {
                 $stmtAddRecetteIngredient->bindParam(':id_recette', $id_recette, PDO::PARAM_INT);
